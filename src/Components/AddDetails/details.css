@@ -1,0 +1,70 @@
+/* details.css */
+
+#adddetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 83.8vh;
+  background-image: url(./backgroung.jpg);
+  background-size: cover;
+}
+
+#adddetails-form {
+  width: 400px;
+  height: 580px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  text-align: center;
+  border-style: inset;
+
+}
+
+#adddetails-form span {
+  font-size: medium;
+  font-weight: bold;
+  display: block;
+  color: white;
+  letter-spacing: 5px;
+  text-align: center;
+
+}
+
+#adddetails-form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 280px;
+  outline: none;
+  transition: 0.5s;
+  background: none;
+  border: none;
+  border-bottom: 2px solid black;
+  color: white;
+  text-align: center;
+  border-style: inset;
+}
+
+#adddetails-form>h3 {
+  color: white;
+  margin: 15px;
+}
+
+#adddetails-form button {
+  background: none;
+  border-style: inset;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  
+}
+
+#btn button {
+  border-style: groove;
+  margin-left: 25px;
+  transition: .5s;
+}
+
+#btn button:hover {
+  transform: scale(1.3);
+}

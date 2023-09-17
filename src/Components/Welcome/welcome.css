@@ -1,0 +1,52 @@
+/* welcome.css */
+
+#welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 83.8vh;
+    /* background-color: #f0f0f0; */
+    /* background-image: url(./background.jpg);
+    background-size: cover; */
+    background: linear-gradient(to bottom, #050f0f, #384b38);
+
+  }
+  
+  #welcome-form {
+    text-align: center;
+    /* background-color: #424040; */
+    padding: 60px;
+    height: 500px;
+    border-radius: 10px;
+    border-style:inset ;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0,100000);
+  }
+  
+  #title {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #fffafa;
+  }
+  
+  #welcome-form h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #faf6f6;
+  }
+  
+  #welcome-form button {
+    background-color: #007bff;
+    color: #fff;
+    /* border: none; */
+    background: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.6s;
+  }
+  
+  #welcome-form button:hover {
+    /* background-color: #0056b3; */
+    transform: scale(1.2);
+  }

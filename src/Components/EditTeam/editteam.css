@@ -1,0 +1,50 @@
+#edit-team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 83.8vh;
+    background: linear-gradient(to bottom, #79b4b4, #313831);
+}
+
+#edit-form {
+    width: 400px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 40px rgb(4, 3, 3);
+    text-align: center;
+    border-style: inset;
+}
+
+#edit-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 280px;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    text-align: center;
+    border-style: inset;
+    transition: 0.5s;
+}
+
+#edit-form span {
+    font-size: medium;
+    font-weight: bold;
+    display: block;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+#edit-form button {
+    background: none;
+    border-style: inset;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#edit-form button:hover {
+    transform: scale(1.2);
+}

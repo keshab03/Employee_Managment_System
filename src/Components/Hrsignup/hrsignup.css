@@ -1,0 +1,106 @@
+#hrsignup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 83.8vh;
+    background: linear-gradient(to bottom, #1b3594, #383c38);
+
+}
+
+#hrsignup-form {
+    background: linear-gradient(to bottom, #91aaaa, #e9eee9);
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    margin: 0 auto;
+    text-align: center;
+}
+
+#hrsignup-form input {
+    margin-left: 10px;
+    padding: 10px;
+    width: 280px;
+    border-radius: 14px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.5s;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* #heading {
+    margin-bottom: 30px;
+} */
+
+#hrsignup-form span {
+    font-size: larger;
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#hrsignup-form>button {
+    padding: 8px;
+    border-radius: 10px;
+    margin: 20px;
+    cursor: pointer;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: 0.5s;
+    transition: transform 0.5s;
+}
+
+#hrsignup-form>button:hover {
+    transform: scale(1.2);
+}
+
+#hrsignup-form>button:hover::after {
+    content: '>>>';
+}
+
+#hrpassword-container {
+    display: flex;
+    align-items: center;
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    border-radius: 25px;
+    /* padding: 0 20px; */
+    margin-bottom: 20px;
+}
+
+#hrpassword-container>input {
+    padding: 12px 15px;
+    margin-left: 40px;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+#hrpassword-container button {
+    background: none;
+    border: none;
+    border-radius: 20px;
+    /* margin-left: 10px; */
+    /* padding-left: 15px; */
+    cursor: pointer;
+    outline: none;
+    /* width: 10px; */
+    transition: transform 0.5s;
+}
+
+#hrpassword-container button:hover {
+    transform: rotate(180deg)
+}
+
+#hrpassword-container img {
+    height: 30px;
+}

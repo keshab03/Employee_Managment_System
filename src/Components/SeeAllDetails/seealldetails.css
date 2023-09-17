@@ -1,0 +1,57 @@
+#container {
+  height: 83.8vh;
+  background: linear-gradient(to bottom, #056b6b, #5b5e5b);
+  font-size: large;
+}
+
+#cancle {
+  margin-left: -2%;
+  color: red;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+#heading {
+  text-decoration: underline;
+}
+
+#search {
+  width: 30vw;
+  height: 4vh;
+  margin-left: 30%;
+  margin-bottom: 15px;
+  text-align: center;
+  border-radius: 17px;
+  outline: none;
+  border: none;
+  background: linear-gradient(to right, #a0a2a2, #d5dfd5);
+}
+
+#container>a>button {
+  cursor: pointer;
+  margin: 5px 35px;
+  font-size: medium;
+  float: right;
+  background: none;
+  font-weight: bold;
+}
+
+#employee-table th,
+#employee-table td {
+  text-align: left;
+  background: linear-gradient(to bottom, #283333, #dde3dd);
+
+}
+
+#employee-table button {
+  padding: 5px;
+  margin-left: 15px;
+  cursor: pointer;
+  background: none;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+#employee-table button:hover {
+  transform: scale(1.5);
+}
