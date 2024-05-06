@@ -6,7 +6,7 @@ const Footer = () => {
         <footer id="footer">
 
             <marquee behavior="" direction="">
-                <p>
+                <p id='footertitle'>
                     © Copyright {currentYear} | All Rights Reserved | Keshab Mahanta
                 </p>
             </marquee>
