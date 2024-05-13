@@ -1,106 +1,141 @@
 #hrsignup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 83.8vh;
-    background: linear-gradient(to bottom, #1b3594, #383c38);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 84vh;
+  background: linear-gradient(
+    to right,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
 }
 
 #hrsignup-form {
-    background: linear-gradient(to bottom, #91aaaa, #e9eee9);
-    width: 400px;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgb(0, 0, 0);
-    margin: 0 auto;
-    text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
+  box-shadow: 0 0 10px rgba(236, 117, 117, 0.1);
+  width: 90%;
+  max-width: 400px;
 }
 
-#hrsignup-form input {
-    margin-left: 10px;
-    padding: 10px;
-    width: 280px;
-    border-radius: 14px;
-    font-size: 16px;
-    outline: none;
-    transition: 0.5s;
-    background: none;
-    border: none;
-    border-bottom: 2px solid black;
-    font-weight: bold;
-    text-align: center;
+#hrsignupheading,
+#hrsignup-form > span {
+  /* text-align: center; */
+  margin-bottom: 20px;
+  background: linear-gradient(
+    to right,
+    #fca027,
+    #f83a29,
+    #ff81a8,
+    #9473ff,
+    #028dff,
+    #00e5ff,
+    #80ff72
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* #heading {
-    margin-bottom: 30px;
-} */
-
-#hrsignup-form span {
-    font-size: larger;
-    font-weight: bold;
-    display: block;
-    margin-top: 20px;
-    text-align: center;
+#hrsignup-form > span {
+  color: #000000;
 }
 
-#hrsignup-form>button {
-    padding: 8px;
-    border-radius: 10px;
-    margin: 20px;
-    cursor: pointer;
-    font-size: large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    transition: 0.5s;
-    transition: transform 0.5s;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
 }
 
-#hrsignup-form>button:hover {
-    transform: scale(1.2);
+#hrsignuphrpassword-container {
+  position: relative;
 }
 
-#hrsignup-form>button:hover::after {
-    content: '>>>';
+#hrsignuphrpassword-container input[type="password"],
+#hrsignuphrpassword-container input[type="text"] {
+  width: calc(100% - 40px);
+  padding-right: 40px;
 }
 
-#hrpassword-container {
-    display: flex;
-    align-items: center;
-    /* background-color: rgba(255, 255, 255, 0.8); */
-    border-radius: 25px;
-    /* padding: 0 20px; */
-    margin-bottom: 20px;
+#hrsignuphrpassword-container button {
+  position: absolute;
+  right: 5;
+  top: 0;
+  bottom: 5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
 }
 
-#hrpassword-container>input {
-    padding: 12px 15px;
-    margin-left: 40px;
-    width: 100%;
-    border-radius: 25px;
-    font-size: 16px;
-    outline: none;
-    background: none;
-    border: none;
-    border-bottom: 2px solid black;
-    font-weight: bold;
+button img {
+  width: 20px;
+  height: 20px;
 }
 
-#hrpassword-container button {
-    background: none;
-    border: none;
-    border-radius: 20px;
-    /* margin-left: 10px; */
-    /* padding-left: 15px; */
-    cursor: pointer;
-    outline: none;
-    /* width: 10px; */
-    transition: transform 0.5s;
+button:focus {
+  outline: none;
 }
 
-#hrpassword-container button:hover {
-    transform: rotate(180deg)
+button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
-#hrpassword-container img {
-    height: 30px;
+button:active {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: initial;
+}
+
+/* Animation */
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#hrsignup {
+  animation: rainbow 10s infinite;
+}
+
+@media screen and (max-width: 600px) {
+  #hrsignup {
+    min-height: 74.6vh; /* Further reduced height for smaller screens */
+  }
 }
