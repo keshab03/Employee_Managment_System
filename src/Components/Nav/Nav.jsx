@@ -41,15 +41,15 @@ const Nav = () => {
   return (
     <div id='nav'>
       <Link to='/'>
-        <img src={logo} id='logo' alt="" />
+        <img src={logo} alt="" />
       </Link>
-      <h1 id='heading'>Employee Management</h1>
+      <h1>Employee Management</h1>
       {showLogoutButton && (
         <div>
           <button onClick={logout}>Logout</button>
         </div>
       )}
-      <div style={{ display: 'flex' }} id='usericon'>
+      <div style={{ display: 'flex' }}>
         <img src={icon} alt="" />
         <p style={{ fontWeight: 'bolder' }}>E:- {data.length}</p>
       </div>

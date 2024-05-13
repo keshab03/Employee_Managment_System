@@ -1,99 +1,52 @@
-/* Welcome Page Styles */
+/* welcome.css */
 
 #welcome {
-  background: linear-gradient(to right, #678ad5, #dd6bc8);
-  height: 83.8vh;
-  padding: 150px 0px 0px 0px;
-  position: relative;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 83.8vh;
+    /* background-color: #f0f0f0; */
+    /* background-image: url(./background.jpg);
+    background-size: cover; */
+    background: linear-gradient(to bottom, #050f0f, #384b38);
 
-#welcome-form {
-  text-align: center;
-  width: 90%;
-  max-width: 600px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(to right, #ff4040, #f3ed45);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#title {
-  font-size: 2.5rem;
-  color: #1c0e6e;
-
-}
-
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  background: linear-gradient(to right, #3b5998, #4a63a0);
-  color: rgb(255, 255, 255);
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:focus {
-  outline: none;
-  transform: translateY(-1px);
-}
-
-button:active {
-  transform: translateY(1px);
-}
-
-/* Logo Animation */
-#logo {
-  transition: transform 0.3s ease;
-}
-
-#logo:hover {
-  transform: scale(1.1);
-}
-
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-
-  #title {
-    font-size: 2rem;
-  }
-  
-  button {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-
-  #welcome{
-    height: 74.4vh;
-  }
-
-  #title {
-    font-size: 1.5rem;
-  }
-  
-  button {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
   }
   
   #welcome-form {
-    padding: 10px;
-    width: 90%;
-    max-width: 80%; /* Adjusted max-width for smaller screens */
-    top: 40%; /* Adjusted top position for smaller screens */
-    margin: 0 auto; /* Adjusted margin for smaller screens */
+    text-align: center;
+    /* background-color: #424040; */
+    padding: 60px;
+    height: 500px;
+    border-radius: 10px;
+    border-style:inset ;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0,100000);
   }
-}
-
+  
+  #title {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #fffafa;
+  }
+  
+  #welcome-form h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #faf6f6;
+  }
+  
+  #welcome-form button {
+    background-color: #007bff;
+    color: #fff;
+    /* border: none; */
+    background: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.6s;
+  }
+  
+  #welcome-form button:hover {
+    /* background-color: #0056b3; */
+    transform: scale(1.2);
+  }

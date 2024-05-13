@@ -1,45 +1,18 @@
-#footer {
-    background: linear-gradient(to right, #ff6e7f, #bfe9ff);
-    color: white;
-    text-align: center;
-    height: 39px; /* Set the height to 15px */
+body {
+    height: 100%;
+}
+#root {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    animation: gradientAnimation 5s ease infinite;
-  }
+    flex-direction: column;
+    height: 100vh;
+}
 
-  #footertitle{
-    color: black;
-  }
-  
-  @keyframes gradientAnimation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  #footer p {
-    margin: 0;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    #footer {
-      font-size: 14px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    #footer {
-      font-size: 12px;
-    }
-  }
-  
+#footer {
+    margin-top: auto;
+    background-color: rgb(149, 147, 147);
+    padding: 10px 0;
+    color:black;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
