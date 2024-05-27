@@ -1,101 +1,245 @@
-#signup {
+/* signup.css */
+
+.center-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 83.8vh;
-    background: linear-gradient(to bottom, #070a0a, #e9eee9);
-
-}
-
+    height: 84vh;
+  }
+  
+/* Style for the form container */
 #signup-form {
-    background: linear-gradient(to bottom, #91aaaa, #e9eee9);
-    width: 400px;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgb(0, 0, 0);
-    margin: 0 auto;
-    text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: none;
+  border-radius: 55px;
+  background-color: #87dde9ad;
+  box-shadow: 0 0 50px rgb(103, 137, 239);
 }
 
-#signup-form input {
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 280px;
-    font-size: 16px;
-    outline: none;
-    transition: 0.5s;
-    background: none;
-    border: none;
-    border-bottom: 2px solid black;
-    border-radius: 15px;
-    font-weight: bold;
-    text-align: center;
+/* Style for the headings */
+h2 {
+  color: #000000;
+  text-align: center;
+  margin-bottom: 20px;
+  
 }
 
-#signup-form span {
-    font-size: larger;
-    font-weight: bold;
-    display: block;
-    margin-top: 20px;
-    text-align: center;
+/* Style for the input labels */
+span {
+  display: block;
+  margin-bottom: 5px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-#signup-form>button {
-    padding: 8px;
-    border-radius: 10px;
-    margin: 20px;
-    cursor: pointer;
-    font-size: large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    transition: 0.5s;
-    transition: transform 0.5s;
+/* Style for the input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  transition: border-color 0.3s ease;
+  border: none;
+  box-shadow: 0 0 10px rgb(220, 101, 101);
+  background-color: #c4e9f7;
+  font-size: 15px;
 }
 
-
-#signup-form>button:hover {
-    transform: scale(1.2);
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #66afe9;
+  outline: none; /* Remove default focus outline */
 }
 
-#signup-form>button:hover::after {
-    content: '>>';
+/* Style for the show password button */
+#show-password-btn {
+  cursor: pointer;
+  color: #666;
+  font-size: 14px;
+  margin-top: 5px;
+  display: inline-block;
 }
 
 #password-contain {
+  position: relative;
+}
+
+#password-toggle {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  cursor: pointer;
+  color: #666;
+}
+
+  
+  #password-contain {
+    position: relative;
+  }
+  
+  #lock {
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none; /* Remove background color */
+    border: none; /* Remove border */
+    padding: 0; /* Remove any padding */
+    height: 20px;
+    width: 20px;
+  }
+  
+  #lock img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  
+  #btngrp {
     display: flex;
-    align-items: center;
-    border-radius: 25px;
-    /* margin-left: 35px; */
-    /* padding: 0 20px; */
-    margin-bottom: 20px;
-}
+    justify-content: space-between;
+  }
 
-#password-contain input {
-    padding: 12px 15px;
-    margin-left: 40px ;
-    width: 80%;
-    font-size: 16px;
-    outline: none;
-    background: none;
+  #btngrp a {
+    text-decoration: none;
+  }
+  #btngrp button {
+    font-size: 20px;
+  }
+  
+  #btngrp button {
+    height: 40px;
+    padding: 0 20px;
     border: none;
-    border-bottom: 2px solid black;
-    font-weight: bold;
-}
-
-#password-contain button {
-    background: none;
-    border: none;
-    border-radius: 20px;
-    margin-left: 10px;
-    padding-top: 15px;
+    border-radius: 5px;
     cursor: pointer;
-    outline: none;
-    transition: transform 0.5s;
+    /* background-image: linear-gradient(to right, #ff8a00, #e52e71); Default gradient */
+    color: white;
+    transition: all 0.3s ease; /* Transition for smooth animation */
+  }
+  
+  #newusersignupbtn {
+    background-image: linear-gradient(to right, #007bff, #00bfff); /* Blue gradient */
+    background-image: linear-gradient(to right, #ff8a00, #e52e71); /* Default gradient */    
+  }
+
+  #hrsignup button {
+    background-image: linear-gradient(to right, #ff5733, #ffad33); /* Orange gradient */
+    
+  }
+  
+  #btngrp button:hover {
+    transform: translateY(-2px); /* Move button slightly up on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+  }
+  
+  #lockimg,
+  #unlockimg {
+    width: 20px;
+    height: 20px;
+  }
+  
+
+/* Responsive CSS for Mobile Screens */
+/* For screens up to 768px (e.g., smartphones and small tablets) */
+@media only screen and (max-width: 768px) {
+  .center-container {
+    height: 74.4vh; /* Adjust height for smaller screens */
+  }
+
+  #signup-form {
+    max-width: 90%; /* Adjust max-width for smaller screens */
+    border-radius: 25px; /* Adjust border radius for smaller screens */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  span {
+    font-size: 18px; /* Adjust font size for smaller screens */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+
+  #btngrp {
+    flex-direction: column; /* Arrange buttons vertically for smaller screens */
+    gap: 10px; /* Add gap between buttons for smaller screens */
+  }
+
+  #btngrp button {
+    font-size: 16px; /* Adjust font size for smaller screens */
+    height: 40px; /* Adjust height for smaller screens */
+    padding: 0 20px; /* Adjust padding for smaller screens */
+  }
+
+  #lock,
+  #lockimg,
+  #unlockimg {
+    width: 20px; /* Adjust width for smaller screens */
+    height: 20px; /* Adjust height for smaller screens */
+  }
 }
 
-#password-contain button:hover {
-    transform: rotate(180deg)
+/* For screens from 769px to 1024px (e.g., larger tablets) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .center-container {
+    height: auto; /* Adjust height for medium-sized screens */
+  }
+
+  #signup-form {
+    max-width: 80%; /* Adjust max-width for medium-sized screens */
+  }
+
+  span {
+    font-size: 20px; /* Adjust font size for medium-sized screens */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 18px; /* Adjust font size for medium-sized screens */
+  }
+
+  #btngrp button {
+    font-size: 18px; /* Adjust font size for medium-sized screens */
+    height: 50px; /* Adjust height for medium-sized screens */
+    padding: 0 25px; /* Adjust padding for medium-sized screens */
+  }
 }
 
-#password-contain img {
-    height: 30px;
+/* For screens larger than 1024px (e.g., desktops) */
+@media only screen and (min-width: 1025px) {
+  .center-container {
+    height: 84vh; /* Restore original height for larger screens */
+  }
+
+  #signup-form {
+    max-width: 400px; /* Keep the max-width consistent for larger screens */
+  }
+
+  span {
+    font-size: 22px; /* Adjust font size for larger screens */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 20px; /* Adjust font size for larger screens */
+  }
+
+  #btngrp button {
+    font-size: 20px; /* Adjust font size for larger screens */
+    height: 60px; /* Adjust height for larger screens */
+    padding: 0 30px; /* Adjust padding for larger screens */
+  }
 }
