@@ -2,7 +2,8 @@ const Employee = require('../models/Employee');
 const SignUp = require('../models/Signup')
 const HrSignup = require('../models/Hr')
 const bcrypt = require('bcrypt');
-
+const nodemailer = require("nodemailer");
+const crypto = require('crypto');
 
 
 // Get all employees For Hr's
@@ -169,11 +170,15 @@ const signup = async (req, res) => {
         } else {
             const { name, email, password } = req.body;
 
+            const token = crypto.randomBytes(32).toString("hex");
+
             // Hash the password before saving it to the database
             const hashedPassword = await bcrypt.hash(password, 10);
 
             const employeesignup = new SignUp({ name, email, password: hashedPassword });
-            await employeesignup.save();
+            const userdata = await employeesignup.save();
+            sendmail(name, email, userdata._id);
+
             res.send({ message: 'Employee signUp successfully', status: 200 });
         }
     } catch (error) {
@@ -181,6 +186,57 @@ const signup = async (req, res) => {
         res.send({ message: 'Internal server error while signup', status: 500 });
     }
 };
+const sendmail = async (name, email, userId) => {
+
+    try {
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: "Verify Your Email",
+            html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/user/verify?id=${userId}">verify your account</a></p>`,
+        };
+        transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+                console.log('Error occurred', err);
+            }
+            console.log('Message sent successfully', info.response);
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+const verifyEmail = async (req, res) => {
+    try {
+        if (!req.query.id) {
+            return res.send({ message: 'Invalid verification link', status: 400 });
+
+        }
+
+        // Fetch the user data from the database
+        const user = await SignUp.findById(req.query.id);
+
+        if (!user) {
+            return res.send({ message: 'User not found', status: 404 });
+
+        }
+
+        if (user.verified && user.token === "") {
+            return res.send({ message: 'User already verified', status: 200 });
+
+        }
+
+        // Update the user's verification status
+        await SignUp.updateOne({ _id: req.query.id }, { $set: { token: "", verified: true } });
+
+
+        return res.send({ message: 'Verification Successful', status: 200 });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal server error while verification' });
+    }
+}
 
 
 const hrsignup = async (req, res) => {
