@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 // const requireAuth = require('../middleware/requireAuth');
-const { getAll, getById, getAllEmployee, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById } = require('../controllers/employeeController')
+const { getAll, getById, getAllEmployee, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById, verifyHrEmail, verifyEmail } = require('../controllers/employeeController')
 // const upload = require('../middleware/Multer');
 
 const router = express.Router();
@@ -26,6 +26,10 @@ router.post('/createteam/:employeeId', createteam);
 router.post('/signup', signup);
 
 router.post('/hrsignup', hrsignup);
+
+router.get('/verify', verifyEmail);
+
+router.get('/verifyhr', verifyHrEmail);
 
 router.post('/login', login);
 

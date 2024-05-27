@@ -12,6 +12,10 @@ const hrSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    verified: {
+        type: Boolean,
+        default: false,
     }
 }, { timestamps: true });
 const Employee = mongoose.model('HrDetails', hrSchema);
