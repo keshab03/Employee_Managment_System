@@ -4,10 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import empservice from '../services/Employeeservice'
 import passwordlock from './password.png'
 import passwordunlock from './password-unlock.png'
+import SuccessModal from '../SuccessModal';
+
 const HrLogin = () => {
     let [email, setEmail] = useState('')
     let [password, setPasswd] = useState('')
     let [showpassword, setShowPassword] = useState(false)
+    let [modalMessage, setModalMessage] = useState('');
+    let [showModal, setShowModal] = useState(false);
 
     let emailData = (e) => {
         setEmail(e.target.value)
@@ -23,18 +27,18 @@ const HrLogin = () => {
     let login = async (e) => {
         // e.preventDefault()
         let payload = { email, password };
-       console.log(payload)
+        console.log(payload)
         try {
             await empservice.hrlogin(payload)
                 .then((res) => {
                     console.log('Response from server:', res.status); // Add this line for debugging
                     if (res.status === 200) {
-                        alert(res.message);
-                        navigate('/details');
-                        // navigate('/seealldetails');
+                        setModalMessage(res.message);
+                        setShowModal(true);
                     }
                     else {
-                        alert(res.message);
+                        setModalMessage(res.message);
+                        setShowModal(true);
                         navigate('/');
                     }
                 });
@@ -43,11 +47,16 @@ const HrLogin = () => {
             // Handle the error appropriately if necessary
         }
     };
-
+    let handleCloseModal = () => {
+        setShowModal(false);
+        navigate('/details');
+        window.location.reload()
+    };
 
     return (
         <div id='hrlogin'>
-            <div id='hrlogin-form'>
+            <div id='hrlogin-form' className={showModal ? 'blur' : ''}>
+
 
                 <h2 id='heading'>Hr Login Form</h2>
 
@@ -71,8 +80,14 @@ const HrLogin = () => {
                     </button>
                 </div>
 
-                <button  onClick={login}>Login</button>
+                <button onClick={login}>Login</button>
             </div>
+            {showModal && (
+                <SuccessModal
+                    message={modalMessage}
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     )
 }

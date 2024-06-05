@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const requireAuth = require('../middleware/requireAuth');
 const { getAll, getById, getAllEmployee, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById, verifyHrEmail, verifyEmail } = require('../controllers/employeeController')
-// const upload = require('../middleware/Multer');
+const multer = require('multer');
+const upload = multer({dest: 'uploads/'})
 
 const router = express.Router();
 // router.use(requireAuth);
@@ -19,9 +20,9 @@ router.get('/getempteam/:id', getEmpTeamById);
 
 router.get('/getteam/:employeeId/:teamMemberId', getTeamById);
 
-router.post('/create', createemployee);
+router.post('/create',upload.single('image'), createemployee);
 
-router.post('/createteam/:employeeId', createteam);
+router.post('/createteam/:employeeId',upload.single('image'), createteam);
 
 router.post('/signup', signup);
 
@@ -35,9 +36,9 @@ router.post('/login', login);
 
 router.post('/hrlogin', hrlogin);
 
-router.put('/update/:id', updateById);
+router.put('/update/:id',upload.single('image'), updateById);
 
-router.put('/updateteam/:employeeId/:teamMemberId', updateTeamById);
+router.put('/updateteam/:employeeId/:teamMemberId',upload.single('image'), updateTeamById);
 
 
 router.delete('/delete/:id', deleteById);

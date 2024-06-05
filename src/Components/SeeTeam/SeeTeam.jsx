@@ -38,16 +38,17 @@ const SeeTeam = () => {
         }
     };
 
-    let sl=1;
+    let sl = 1;
 
     return (
         <div id="container">
             <h2 id="heading">Employee Team Details</h2>
             <Link to={`/addteam/${id}`}><button>Add New Team Member</button></Link>
-            <table id="employee-table">
+            <table id="team-table">
                 <thead>
                     <tr>
                         <th>Sl No.</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Phone Number</th>
                         <th>Email</th>
@@ -60,6 +61,9 @@ const SeeTeam = () => {
                     {data.map((x) => (
                         <tr key={x._id}>
                             <td>{sl++}</td>
+                            <td style={{ background: 'none', padding: '0px' }}>
+                                <img src={`http://localhost:5500/${x.imageUrl[0].path}`} alt="" />
+                            </td>
                             <td>{x.name}</td>
                             <td>{x.phone}</td>
                             <td>{x.email}</td>

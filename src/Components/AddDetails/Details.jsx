@@ -11,6 +11,7 @@ const Details = () => {
     let [designation, setDesignation] = useState('')
     let [joining, setJoining] = useState('')
     let [salary, setSalary] = useState('')
+    let [image, setImage] = useState('')
     let navigate = useNavigate()
 
     let nameData = (e) => {
@@ -40,11 +41,24 @@ const Details = () => {
     let hremailData = (e) => {
         setHrEmail(e.target.value);
     }
-
+    let imgData = (e) => {
+        setImage(e.target.files[0]);
+    }
     let submit = async (e) => {
-        let payload = { name, phone, email, designation, joining, salary, hremail }
-        console.log(payload)
-        await empservice.createemployee(payload)
+        // let payload = { name, phone, email, designation, joining, salary, hremail, image }
+        const formData = new FormData();
+
+        formData.append('name', name)
+        formData.append('phone', phone)
+        formData.append('email', email)
+        formData.append('designation', designation)
+        formData.append('joining', joining)
+        formData.append('salary', salary)
+        formData.append('hremail', hremail)
+        formData.append('image', image)
+
+        console.log("formData",formData)
+        await empservice.createemployee(formData)
             .then((res) => {
                 console.log(res)
                 console.log(res.status)
@@ -83,6 +97,8 @@ const Details = () => {
 
                 <span>Hr Email</span>
                 <input type="email" placeholder="Enter Hr's Email" value={hremail} onChange={hremailData} />
+
+                <input type="file" onChange={imgData} accept="image/png, image/jpeg" />
 
                 <div id='btn'>
                     <button onClick={submit}>Submit</button>

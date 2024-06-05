@@ -11,6 +11,7 @@ const AddTeam = () => {
     let [phone, setPhone] = useState('')
     let [designation, setDesignation] = useState('')
     let [work, setWork] = useState('')
+    let [image, setImage] = useState('')
 
     let navigate = useNavigate()
 
@@ -38,10 +39,24 @@ const AddTeam = () => {
         setWork(e.target.value);
     }
 
+    let imgData = (e) => {
+        setImage(e.target.files[0]);
+    }
+
     let submit = async (e) => {
-        const payload = { name, phone, email, designation, work };
-        console.log(payload)
-        await empservice.createteam(payload, id)
+        // const payload = { name, phone, email, designation, work };
+
+        const formData = new FormData();
+
+        formData.append('name', name)
+        formData.append('phone', phone)
+        formData.append('email', email)
+        formData.append('designation', designation)
+        formData.append('work', work)
+        formData.append('image', image)
+
+        console.log(formData)
+        await empservice.createteam(formData, id)
             .then((res) => {
                 console.log(res)
                 if (res.status === 404) {
@@ -80,6 +95,9 @@ const AddTeam = () => {
 
                 <span>Work</span>
                 <input type="text" placeholder='Enter Work' value={work} onChange={workData} />
+
+                <input type="file" onChange={imgData} accept="image/png, image/jpeg" />
+
                 <br />
                 <button onClick={submit}>Submit</button>
                 <button>

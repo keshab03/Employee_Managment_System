@@ -32,6 +32,7 @@ const Login = () => {
             if (response.status === 200) {
                 alert(response.message);
                 navigate(`/addteam/${response.id}`);
+                window.location.reload()
             } else if (response.status === 201) {
                 alert(response.message);
                 navigate('/');

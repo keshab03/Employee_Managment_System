@@ -6,7 +6,10 @@
     background: linear-gradient(to bottom, #1b3594, #383c38);
 
 }
-
+#hrsignup-form.blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
 #hrsignup-form {
     background: linear-gradient(to bottom, #91aaaa, #e9eee9);
     width: 400px;

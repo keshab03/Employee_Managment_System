@@ -38,11 +38,16 @@
 
 #employee-table th,
 #employee-table td {
-  text-align: left;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
   background: linear-gradient(to bottom, #283333, #dde3dd);
 
 }
-
+#employee-table img{
+  width: 100px;
+  height: 70px;
+}
 #employee-table button {
   padding: 5px;
   margin-left: 15px;

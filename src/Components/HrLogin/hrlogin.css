@@ -8,7 +8,10 @@
     background-image: url(./backgroung.jpg);
     background-size: cover;
 }
-
+#hrlogin-form.blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
 #hrlogin-form {
     width: 400px;
     height: 400px;

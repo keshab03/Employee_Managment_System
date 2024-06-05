@@ -6,22 +6,25 @@
 
 #heading {
   font-size: 24px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
-#employee-table {
+#team-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-#employee-table th,
-#employee-table td {
+#team-table th,
+#team-table td {
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
-
-#employee-table th {
+#team-table img{
+  width: 100px;
+  height: 70px;
+}
+#team-table th {
   background-color: #f2f2f2;
   font-weight: bold;
 }

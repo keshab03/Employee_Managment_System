@@ -4,11 +4,16 @@ import { useNavigate } from 'react-router-dom'
 import empservice from '../services/Employeeservice'
 import passwordlock from './password.png'
 import passwordunlock from './password-unlock.png'
+import SuccessModal from '../SuccessModal';
+
 const HrSignup = () => {
     let [name, setName] = useState('')
     let [email, setEmail] = useState('')
     let [password, setPasswd] = useState('')
     let [showpassword, setShowPassword] = useState(false)
+    let [modalMessage, setModalMessage] = useState('');
+    let [showModal, setShowModal] = useState(false);
+
     let nameData = (e) => {
         setName(e.target.value)
     }
@@ -31,23 +36,32 @@ const HrSignup = () => {
             .then((res) => {
                 // console.log(res)
                 if (res.status === 200) {
-                    alert(res.message)
-                    navigate('/hrlogin')
+                    setModalMessage(res.message);
+                    setShowModal(true);
                 }
                 else if (res.status === 409) {
-                    alert(res.message)
-                    navigate('/hrlogin')
+                    setModalMessage(res.message);
+                    setShowModal(true);
 
                 }
+                else if (res.status === 310) {
+                    setModalMessage(res.message);
+                    setShowModal(true);
+                }
                 else {
-                    alert(res.message)
-                    navigate('/')
+                    setModalMessage(res.message);
+                    setShowModal(true);
+                    navigate('/');
                 }
             })
     }
+    let handleCloseModal = () => {
+        setShowModal(false);
+        navigate('/hrlogin');
+    };
     return (
         <div id='hrsignup'>
-            <div id='hrsignup-form'>
+            <div id='hrsignup-form' className={showModal ? 'blur' : ''}>
                 <h2 id='heading'>Hr Sign-Up Form</h2>
 
                 <span>Name</span>
@@ -74,6 +88,12 @@ const HrSignup = () => {
                 </div>
                 <button onClick={sign}>Sign-Up</button>
             </div>
+            {showModal && (
+                <SuccessModal
+                    message={modalMessage}
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 };

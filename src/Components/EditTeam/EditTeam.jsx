@@ -9,6 +9,8 @@ const EditTeam = () => {
     let [email, setEmail] = useState('');
     let [designation, setDesignation] = useState('');
     let [work, setWork] = useState('');
+    const [image, setImage] = useState('');
+    const [imageName, setImageName] = useState('No file chosen');
     let navigate = useNavigate()
 
     const loc = useLocation();
@@ -30,6 +32,9 @@ const EditTeam = () => {
                     setEmail(teamMemberData.email);
                     setDesignation(teamMemberData.designation);
                     setWork(teamMemberData.work);
+                    setImage(teamMemberData.imageUrl[0].path);
+                    setImageName(teamMemberData.imageUrl[0].originalname);
+
                 }
             } catch (error) {
                 console.error(error);
@@ -65,12 +70,27 @@ const EditTeam = () => {
         setWork(e.target.value);
     };
 
+    const imgData = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        setImageName(file ? file.name : 'No file chosen');
+    };
+
     let update = async (e) => {
         e.preventDefault();
-        let payload = { name, phone, email, designation, work };
+        // let payload = { name, phone, email, designation, work };
+        const formData = new FormData();
+
+        formData.append('name', name)
+        formData.append('phone', phone)
+        formData.append('email', email)
+        formData.append('designation', designation)
+        formData.append('work', work)
+        formData.append('image', image)
+
         try {
             console.log('Updating with employeeId:', employeeId, 'teamMemberId:', teamMemberId);
-            await empservice.updateteam(employeeId, teamMemberId, payload);
+            await empservice.updateteam(employeeId, teamMemberId, formData);
             navigate(`/seeteam/${employeeId}`);
         } catch (error) {
             console.error(error);
@@ -98,6 +118,14 @@ const EditTeam = () => {
 
                 <span>Work</span>
                 <input type='text' placeholder='Enter Salary' value={work} onChange={workData} />
+
+                <div className="file-input-container">
+                    <input type="file" id="file" onChange={imgData} accept="image/png, image/jpeg" style={{ display: 'none' }} />
+                    <label htmlFor="file" className="file-input-label">
+                        Choose File
+                    </label>
+                    <p className="file-input-name">{imageName}</p>
+                </div>
                 <br />
                 <button onClick={update}>Update</button>
             </form>

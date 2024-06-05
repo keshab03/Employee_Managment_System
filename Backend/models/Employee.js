@@ -20,7 +20,11 @@ const teamSchema = new mongoose.Schema({
     work: {
         type: String,
         required: true,
-    }
+    },
+    imageUrl: {
+        type: Array,
+        required: true,
+    },
 }, { timestamps: true });
 
 const employeeSchema = new mongoose.Schema({
@@ -50,6 +54,10 @@ const employeeSchema = new mongoose.Schema({
     },
     hremail: {
         type: String,
+        required: true,
+    },
+    imageUrl: {
+        type: Array,
         required: true,
     },
     MyTeam: [teamSchema]  // Nest the teamSchema inside employeeSchema as an array

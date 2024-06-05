@@ -6,6 +6,10 @@
     background: linear-gradient(to bottom, #070a0a, #e9eee9);
 
 }
+#signup-form.blur {
+    filter: blur(5px);
+    pointer-events: none;
+}
 
 #signup-form {
     background: linear-gradient(to bottom, #91aaaa, #e9eee9);

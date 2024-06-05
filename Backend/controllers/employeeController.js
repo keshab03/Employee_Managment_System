@@ -109,12 +109,13 @@ const getTeamById = async (req, res) => {
 const createemployee = async (req, res) => {
     try {
         const { name, phone, email, designation, joining, salary, hremail } = req.body;
+        const imageUrl = req.file;
         const userData = await Employee.findOne({ email: req.body.email });
         if (userData) {
             res.json({ message: "User Already Exists", status: 409 });
         }
         else {
-            const employee = new Employee({ name, phone, email, designation, joining, salary, hremail });
+            const employee = new Employee({ name, phone, email, designation, joining, salary, hremail, imageUrl });
             await employee.save();
             res.send({ message: 'Employee created successfully', status: 201 });
         }
@@ -128,6 +129,7 @@ const createteam = async (req, res) => {
     try {
         const id = req.params.employeeId;
         const { name, phone, email, designation, work } = req.body;
+        const imageUrl = req.file;
 
         const employee = await Employee.findById(id);
         // console.log(employee)
@@ -150,6 +152,7 @@ const createteam = async (req, res) => {
             email,
             designation,
             work,
+            imageUrl
         });
 
         await employee.save();
@@ -172,7 +175,7 @@ const signup = async (req, res) => {
         const userData = await SignUp.findOne({ email: req.body.email });
 
         if (userData) {
-            res.json({ message: "User Already Exists", status: 409 });
+            res.json({ message: '' + userData.email + ' Already Exists', status: 409 });
         } else {
             const { name, email, password } = req.body;
 
@@ -184,7 +187,7 @@ const signup = async (req, res) => {
             const userdata = await employeesignup.save();
             sendmail(name, email, userdata._id);
 
-            res.send({ message: 'Employee signUp successfully', status: 200 });
+            res.send({ message: 'Hi ' + name + ' you have signed-up successfully please check your mail for verification', status: 200 });
         }
     } catch (error) {
         console.error(error);
@@ -249,7 +252,7 @@ const hrsignup = async (req, res) => {
         const userData = await HrSignup.findOne({ email: req.body.email });
 
         if (userData) {
-            res.json({ message: "User Already Exists", status: 409 });
+            res.json({ message: '' + userData.email + ' Already Exists', status: 409 });
         } else {
             const { name, email, password } = req.body;
 
@@ -259,7 +262,7 @@ const hrsignup = async (req, res) => {
             const hrsignup = new HrSignup({ name, email, password: hashedPassword });
             const userdata = await hrsignup.save();
             sendHrMail(name, email, userdata._id);
-            res.send({ message: 'Hr signUp successfully', status: 200 });
+            res.send({ message: 'Hi ' + name + ' you have signed-up successfully please check your mail for verification', status: 200 });
         }
     } catch (error) {
         console.error(error);
@@ -301,7 +304,6 @@ const verifyHrEmail = async (req, res) => {
             return res.send({ message: 'User not found', status: 404 });
 
         }
-
         if (user.verified) {
             return res.send({ message: 'User already verified', status: 200 });
 
@@ -327,8 +329,10 @@ const login = async (req, res) => {
 
         if (userData) {
             const isPasswordValid = await bcrypt.compare(req.body.password, userData.password);
-
-            if (isPasswordValid && userData1 !== null && req.body.email === userData1.email) {
+            if (!userData.verified) {
+                return res.send({ message: 'Please verify your email', status: 310 });
+            }
+            else if (isPasswordValid && userData1 !== null && req.body.email === userData1.email) {
                 return res.send({ message: 'LogIn Successful And Details Already Added', status: 200, id: userData1._id, email: userData1.email });
             } else if (isPasswordValid && req.body.email === userData.email && userData1 === null) {
                 return res.send({ message: 'Successful Logged In But Details Not Added. Contact HR.', status: 201 });
@@ -352,9 +356,11 @@ const hrlogin = async (req, res) => {
 
         if (userData) {
             const isPasswordValid = await bcrypt.compare(req.body.password, userData.password);
-
-            if (isPasswordValid) {
-                res.send({ message: 'HR LogIn Successful', status: 200, id: userData._id, email: userData.email });
+            if (!userData.verified) {
+                return res.send({ message: 'Please verify your email', status: 310 });
+            }
+            else if (isPasswordValid) {
+                res.send({ message: 'Hi HR ' + userData.name + ' you have LogedIn Successful', status: 200, id: userData._id, email: userData.email });
             } else {
                 res.send({ message: 'Please enter a valid password', status: 401 });
             }
@@ -373,9 +379,9 @@ const hrlogin = async (req, res) => {
 const updateById = async (req, res) => {
     try {
         const { name, phone, email, designation, joining, salary, hremail } = req.body;
-
+        const imageUrl = req.file;
         const employeeUpdate = {
-            name, phone, email, designation, joining, salary, hremail
+            name, phone, email, designation, joining, salary, hremail, imageUrl
         };
 
         const employee = await Employee.findByIdAndUpdate(req.params.id, employeeUpdate, { new: true });
@@ -394,6 +400,7 @@ const updateTeamById = async (req, res) => {
     try {
         const { employeeId, teamMemberId } = req.params;
         const { name, phone, email, designation, work } = req.body;
+        const imageUrl = req.file;
 
         const employee = await Employee.findById(employeeId);
 
@@ -413,6 +420,7 @@ const updateTeamById = async (req, res) => {
         teamMember.email = email;
         teamMember.designation = designation;
         teamMember.work = work;
+        teamMember.imageUrl = imageUrl;
 
         await employee.save();
 
@@ -468,4 +476,4 @@ const deleteTeamById = async (req, res) => {
 };
 
 
-module.exports = { getAll, getAllEmployee, getById, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById,verifyHrEmail, verifyEmail }
+module.exports = { getAll, getAllEmployee, getById, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById, verifyHrEmail, verifyEmail }

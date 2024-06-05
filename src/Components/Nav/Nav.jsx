@@ -27,6 +27,9 @@ const Nav = () => {
 
     const emailInLocalStorage = localStorage.getItem('email');
     const idInLocalStorage = localStorage.getItem('id');
+    if (!idInLocalStorage && !emailInLocalStorage) {
+      localStorage.clear();
+    }
     setShowLogoutButton(emailInLocalStorage && idInLocalStorage);
   }, []);
 

@@ -130,6 +130,7 @@ const Employeeservice = {
             if (error.response && error.response.data) {
                 throw new Error(error.response.data.error);
             } else {
+                console.log(response.data);
                 throw new Error("Something went wrong while adding details");
             }
         }
@@ -235,6 +236,7 @@ const Employeeservice = {
 
 
     updateemployee: async (data, empId) => {
+        console.log("data",data);
         try {
             const response = await axios.put(`${baseUrl}/emp/update/${empId}`, data);
             console.log('Employee updated');
