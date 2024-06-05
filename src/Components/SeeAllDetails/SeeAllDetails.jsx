@@ -82,7 +82,7 @@ const SeeAllDetails = () => {
               <tr key={x._id}>
                 <td>{sl++}</td>
                 <td style={{background:'none',padding:'0px'}}>
-                  <img src={`http://localhost:5500/${x.imageUrl[0].path}`} alt="" />
+                  <img src={`https://employee-managment-system-2.onrender.com/${x.imageUrl[0].path}`} alt="" />
                   </td>
                 <td>{x.name}</td>
                 <td>{x.phone}</td>
