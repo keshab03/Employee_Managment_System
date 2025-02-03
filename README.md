@@ -1,5 +1,6 @@
 # Employee_Managment_System
- 
+
+ NOTE: IF THE LOGOUT BUTTON IS SHOWING AFTER THE APPLICATION STARTS PLEASE CLICK ON LOGOUT. 
  
  First npm i for front-end and Back-end both
  
