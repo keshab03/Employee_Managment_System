@@ -13,7 +13,9 @@ const HrSignup = () => {
     let [showpassword, setShowPassword] = useState(false)
     let [modalMessage, setModalMessage] = useState('');
     let [showModal, setShowModal] = useState(false);
-
+    let [nameerrortext, setNAmeErrorText] = useState('')
+    let [emailerrortext, setEmailErrorText] = useState('')
+    let [passworderrortext, setPasswordErrorText] = useState('')
     let nameData = (e) => {
         setName(e.target.value)
     }
@@ -30,6 +32,22 @@ const HrSignup = () => {
     let navigate = useNavigate()
 
     let sign = async (e) => {
+        if (!name) {
+            setNAmeErrorText("please fill the name")
+            return
+        } else {
+            setNAmeErrorText('')
+        } if (!email) {
+            setEmailErrorText("please fill the email")
+            return
+        } else {
+            setEmailErrorText('')
+        } if (!password) {
+            setPasswordErrorText("please fill the password")
+            return
+        } else {
+            setPasswordErrorText('')
+        }
         let payload = { name, email, password }
         // console.log(payload)
         await empservice.hrsignup(payload)
@@ -66,9 +84,11 @@ const HrSignup = () => {
 
                 <span>Name</span>
                 <input type="text" placeholder='Enter Name' value={name} onChange={nameData} />
+                <p style={{ color: 'red' }}>{nameerrortext}</p>
 
                 <span>Email-Id</span>
                 <input type="email" placeholder='Enter Email' value={email} onChange={emailData} />
+                <p style={{ color: 'red' }}>{emailerrortext}</p>
             
                 <span>Password</span>
                 <div id='hrpassword-container'>
@@ -78,6 +98,8 @@ const HrSignup = () => {
                         value={password}
                         onChange={passData}
                     />
+                    <p style={{ color: 'red' }}>{passworderrortext}</p>
+
                     <button onClick={showpass}>
                         {showpassword ? (
                             <img src={passwordunlock} alt="" />

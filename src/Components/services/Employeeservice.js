@@ -56,7 +56,9 @@ const Employeeservice = {
             const localStorageEmail = localStorage.getItem('email'); // Replace 'Id' with your actual key name
             const response = await axios.get(`${baseUrl}/emp/get/${empid}`);
             // console.log("To compare", response.data.employee.hremail)
-            if (response.data.employee.email == localStorageEmail) {
+            // console.log("response.data.employee.email",response.data.employee.email);
+            
+            if (response.data.employee.hremail == localStorageEmail || response.data.employee.email == localStorageEmail) {
                 console.log("",response.data.employee)
                 return response.data.employee;
             } else {

@@ -14,7 +14,9 @@ const Signup = () => {
     let [showpassword, setShowPassword] = useState(false);
     let [modalMessage, setModalMessage] = useState('');
     let [showModal, setShowModal] = useState(false);
-
+    let [nameerrortext, setNAmeErrorText] = useState('')
+    let [emailerrortext, setEmailErrorText] = useState('')
+    let [passworderrortext, setPasswordErrorText] = useState('')
     let nameData = (e) => {
         setName(e.target.value);
     };
@@ -31,21 +33,42 @@ const Signup = () => {
     let navigate = useNavigate();
 
     let sign = async (e) => {
-        let payload = { name, email, password };
-        await empservice.signup(payload)
-            .then((res) => {
-                if (res.status === 200) {
-                    setModalMessage(res.message);
-                    setShowModal(true);
-                } else if (res.status === 409) {
-                    setModalMessage(res.message);
-                    setShowModal(true);
-                } else {
-                    setModalMessage(res.message);
-                    setShowModal(true);
-                    navigate('/');
-                }
-            });
+        if (!name) {
+            setNAmeErrorText("please fill the name")
+            return
+        } else {
+            setNAmeErrorText('')
+        } if (!email) {
+            setEmailErrorText("please fill the email")
+            return
+        } else {
+            setEmailErrorText('')
+        } if (!password) {
+            setPasswordErrorText("please fill the password")
+            return
+        } else {
+            setPasswordErrorText('')
+        }
+        if (password.length >= 8) {
+            let payload = { name, email, password };
+            await empservice.signup(payload)
+                .then((res) => {
+                    if (res.status === 200) {
+                        setModalMessage(res.message);
+                        setShowModal(true);
+                    } else if (res.status === 409) {
+                        setModalMessage(res.message);
+                        setShowModal(true);
+                    } else {
+                        setModalMessage(res.message);
+                        setShowModal(true);
+                        navigate('/');
+                    }
+                });
+        } else {
+            setPasswordErrorText("please enter 8 character")
+        }
+
     };
 
     let handleCloseModal = () => {
@@ -60,10 +83,10 @@ const Signup = () => {
 
                 <span>Name</span>
                 <input type="text" placeholder='Enter Name' value={name} onChange={nameData} />
-
+                <p style={{ color: 'red' }}>{nameerrortext}</p>
                 <span>Email-Id</span>
                 <input type="email" placeholder='Enter Email' value={email} onChange={emailData} />
-
+                <p style={{ color: 'red' }}>{emailerrortext}</p>
                 <span>Password</span>
                 <div id='password-contain'>
                     <input
@@ -72,6 +95,7 @@ const Signup = () => {
                         value={password}
                         onChange={passData}
                     />
+                    <p style={{ color: 'red' }}>{passworderrortext}</p>
                     <button onClick={showpass}>
                         {showpassword ? (
                             <img src={passwordunlock} alt="" />
