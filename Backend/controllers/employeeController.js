@@ -201,8 +201,8 @@ const sendmail = async (name, email, userId) => {
             from: process.env.EMAIL,
             to: email,
             subject: "Verify Your Email",
-            // html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verify?id=${userId}">verify your account</a></p>`,
-            html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verify?id=${userId}">verify your account</a></p>`,
+            html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verify?id=${userId}">verify your account</a></p>`,
+            // html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verify?id=${userId}">verify your account</a></p>`,
         };
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
@@ -278,8 +278,8 @@ const sendHrMail = async (name, email, userId) => {
             from: process.env.EMAIL,
             to: email,
             subject: "Verify Your Email",
-            // html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verifyhr?id=${userId}">verify your account</a></p>`,
-            html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verifyhr?id=${userId}">verify your account</a></p>`,
+            html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verifyhr?id=${userId}">verify your account</a></p>`,
+            // html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verifyhr?id=${userId}">verify your account</a></p>`,
         };
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
