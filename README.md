@@ -1,6 +1,9 @@
 # Employee_Managment_System
+
+ NOTE: IF THE LOGOUT BUTTON IS SHOWING AFTER THE APPLICATION STARTS PLEASE CLICK ON LOGOUT. 
  
- 
+First the hr must signup and verify the mail.Then hr has to login and the employees details after that the added employee has to signup and verify the mail. Then he has to login and add the team members details.
+
  First npm i for front-end and Back-end both
  
 
