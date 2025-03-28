@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e964c055.css",
+    "main.js": "/static/js/main.cd11e60a.js",
+    "static/media/background.jpeg": "/static/media/background.b27cf1d4745b94782eca.jpeg",
+    "static/media/backgroung.jpg": "/static/media/backgroung.518eb3635b0d9059d4ce.jpg",
+    "static/media/kmLogo.jpg": "/static/media/kmLogo.987cdaef23df6b8708d9.jpg",
+    "index.html": "/index.html",
+    "main.e964c055.css.map": "/static/css/main.e964c055.css.map",
+    "main.cd11e60a.js.map": "/static/js/main.cd11e60a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e964c055.css",
+    "static/js/main.cd11e60a.js"
+  ]
+}
