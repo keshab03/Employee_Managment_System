@@ -423,8 +423,9 @@ const updateTeamById = async (req, res) => {
         teamMember.email = email;
         teamMember.designation = designation;
         teamMember.work = work;
-        teamMember.imageUrl = imageUrl;
-
+        if (imageUrl) {
+            teamMember.imageUrl = imageUrl;
+         }
         await employee.save();
 
         res.status(200).json({ message: 'Team member updated successfully', teamMember });
