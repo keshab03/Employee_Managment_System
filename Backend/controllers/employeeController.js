@@ -332,10 +332,10 @@ const login = async (req, res) => {
 
         if (userData) {
             const isPasswordValid = await bcrypt.compare(req.body.password, userData.password);
-            if (!userData.verified) {
-                return res.send({ message: 'Please verify your email', status: 310 });
-            }
-            else if (isPasswordValid && userData1 !== null && req.body.email === userData1.email) {
+            // if (!userData.verified) {
+            //     return res.send({ message: 'Please verify your email', status: 310 });
+            // }
+             if (isPasswordValid && userData1 !== null && req.body.email === userData1.email) {
                 return res.send({ message: 'LogIn Successful And Details Already Added', status: 200, id: userData1._id, email: userData1.email });
             } else if (isPasswordValid && req.body.email === userData.email && userData1 === null) {
                 return res.send({ message: 'Successful Logged In But Details Not Added. Contact HR.', status: 201 });
@@ -359,10 +359,10 @@ const hrlogin = async (req, res) => {
 
         if (userData) {
             const isPasswordValid = await bcrypt.compare(req.body.password, userData.password);
-            if (!userData.verified) {
-                return res.send({ message: 'Please verify your email', status: 310 });
-            }
-            else if (isPasswordValid) {
+            // if (!userData.verified) {
+            //     return res.send({ message: 'Please verify your email', status: 310 });
+            // }
+             if (isPasswordValid) {
                 res.send({ message: 'Hi HR ' + userData.name + ' you have LogedIn Successful', status: 200, id: userData._id, email: userData.email });
             } else {
                 res.send({ message: 'Please enter a valid password', status: 401 });
