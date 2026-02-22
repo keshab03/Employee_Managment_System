@@ -13,10 +13,10 @@ const hrSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    verified: {
-        type: Boolean,
-        default: false,
-    }
+    // verified: {
+    //     type: Boolean,
+    //     default: false,
+    // }
 }, { timestamps: true });
 const Employee = mongoose.model('HrDetails', hrSchema);
 module.exports = Employee;

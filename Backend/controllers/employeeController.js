@@ -480,4 +480,5 @@ const deleteTeamById = async (req, res) => {
 };
 
 
-module.exports = { getAll, getAllEmployee, getById, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById, verifyHrEmail, verifyEmail }
+// module.exports = { getAll, getAllEmployee, getById, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById, verifyHrEmail, verifyEmail }
+module.exports = { getAll, getAllEmployee, getById, createemployee, updateById, deleteById, signup, login, hrsignup, hrlogin, createteam, deleteTeamById, getTeamById, updateTeamById, getEmpTeamById }
