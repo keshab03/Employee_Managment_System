@@ -194,58 +194,58 @@ const signup = async (req, res) => {
         res.send({ message: 'Internal server error while signup', status: 500 });
     }
 };
-const sendmail = async (name, email, userId) => {
+// const sendmail = async (name, email, userId) => {
 
-    try {
-        const mailOptions = {
-            from: process.env.EMAIL,
-            to: email,
-            subject: "Verify Your Email",
-            html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verify?id=${userId}">verify your account</a></p>`,
-            // html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verify?id=${userId}">verify your account</a></p>`,
-        };
-        transporter.sendMail(mailOptions, function (err, info) {
-            if (err) {
-                console.log('Error occurred', err);
-            }
-            console.log('Message sent successfully', info);
-        });
-    } catch (error) {
-        console.log(error.message);
-    }
-};
+//     try {
+//         const mailOptions = {
+//             from: process.env.EMAIL,
+//             to: email,
+//             subject: "Verify Your Email",
+//             html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verify?id=${userId}">verify your account</a></p>`,
+//             // html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verify?id=${userId}">verify your account</a></p>`,
+//         };
+//         transporter.sendMail(mailOptions, function (err, info) {
+//             if (err) {
+//                 console.log('Error occurred', err);
+//             }
+//             console.log('Message sent successfully', info);
+//         });
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// };
 
-const verifyEmail = async (req, res) => {
-    try {
-        if (!req.query.id) {
-            return res.send({ message: 'Invalid verification link', status: 400 });
+// const verifyEmail = async (req, res) => {
+//     try {
+//         if (!req.query.id) {
+//             return res.send({ message: 'Invalid verification link', status: 400 });
 
-        }
+//         }
 
-        // Fetch the user data from the database
-        const user = await SignUp.findById(req.query.id);
+//         // Fetch the user data from the database
+//         const user = await SignUp.findById(req.query.id);
 
-        if (!user) {
-            return res.send({ message: 'User not found', status: 404 });
+//         if (!user) {
+//             return res.send({ message: 'User not found', status: 404 });
 
-        }
+//         }
 
-        if (user.verified) {
-            return res.send({ message: 'User already verified', status: 200 });
+//         if (user.verified) {
+//             return res.send({ message: 'User already verified', status: 200 });
 
-        }
+//         }
 
-        // Update the user's verification status
-        await SignUp.updateOne({ _id: req.query.id }, { $set: { verified: true } });
+//         // Update the user's verification status
+//         await SignUp.updateOne({ _id: req.query.id }, { $set: { verified: true } });
 
 
-        return res.send({ message: 'Verification Successful', status: 200 });
+//         return res.send({ message: 'Verification Successful', status: 200 });
 
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: 'Internal server error while verification' });
-    }
-}
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ message: 'Internal server error while verification' });
+//     }
+// }
 
 
 const hrsignup = async (req, res) => {
@@ -271,58 +271,58 @@ const hrsignup = async (req, res) => {
     }
 };
 
-const sendHrMail = async (name, email, userId) => {
+// const sendHrMail = async (name, email, userId) => {
 
-    try {
-        const mailOptions = {
-            from: process.env.EMAIL,
-            to: email,
-            subject: "Verify Your Email",
-            html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verifyhr?id=${userId}">verify your account</a></p>`,
-            // html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verifyhr?id=${userId}">verify your account</a></p>`,
-        };
-        transporter.sendMail(mailOptions, function (err, info) {
-            if (err) {
-                console.log('Error occurred', err);
-            }
-            console.log('Message sent successfully', info);
-        });
-    } catch (error) {
-        console.log(error.message);
-    }
-};
+//     try {
+//         const mailOptions = {
+//             from: process.env.EMAIL,
+//             to: email,
+//             subject: "Verify Your Email",
+//             html: `<p>Hi ${name}, click here to <a href="https://employee-managment-system-2.onrender.com/emp/verifyhr?id=${userId}">verify your account</a></p>`,
+//             // html: `<p>Hi ${name}, click here to <a href="http://localhost:5500/emp/verifyhr?id=${userId}">verify your account</a></p>`,
+//         };
+//         transporter.sendMail(mailOptions, function (err, info) {
+//             if (err) {
+//                 console.log('Error occurred', err);
+//             }
+//             console.log('Message sent successfully', info);
+//         });
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// };
 
-const verifyHrEmail = async (req, res) => {
-    try {
-        if (!req.query.id) {
-            return res.send({ message: 'Invalid verification link', status: 400 });
+// const verifyHrEmail = async (req, res) => {
+//     try {
+//         if (!req.query.id) {
+//             return res.send({ message: 'Invalid verification link', status: 400 });
 
-        }
+//         }
 
-        // Fetch the user data from the database
-        const user = await HrSignup.findById(req.query.id);
+//         // Fetch the user data from the database
+//         const user = await HrSignup.findById(req.query.id);
 
-        if (!user) {
-            console.log(user);
-            return res.send({ message: 'User not found', status: 404 });
+//         if (!user) {
+//             console.log(user);
+//             return res.send({ message: 'User not found', status: 404 });
 
-        }
-        if (user.verified) {
-            return res.send({ message: 'User already verified', status: 200 });
+//         }
+//         if (user.verified) {
+//             return res.send({ message: 'User already verified', status: 200 });
 
-        }
+//         }
 
-        // Update the user's verification status
-        await HrSignup.updateOne({ _id: req.query.id }, { $set: { verified: true } });
+//         // Update the user's verification status
+//         await HrSignup.updateOne({ _id: req.query.id }, { $set: { verified: true } });
 
 
-        return res.send({ message: 'Verification Successful', status: 200 });
+//         return res.send({ message: 'Verification Successful', status: 200 });
 
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: 'Internal server error while verification' });
-    }
-}
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ message: 'Internal server error while verification' });
+//     }
+// }
 
 const login = async (req, res) => {
     try {
